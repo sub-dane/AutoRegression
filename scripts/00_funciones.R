@@ -536,6 +536,7 @@ AutoRegression = function(
   #=================================================#
   # Estandarización y organización de las variables #
   #=================================================#
+  dir.create(paste0("out/",.folder,"/vt_",.suffix), recursive = T)
   datos = PrepVariables(data.train = df.train, data.test = df.test, var.e = var.e, var.sqrt = var.sqrt, var.otras = var.otras, var.log = var.log, .folder, .suffix)
   list2env(datos, .GlobalEnv)
   rm(datos);gc()
@@ -1917,4 +1918,3 @@ AutoRegressionPredict = function(
   return(df.test.lm)
   
 }
-
