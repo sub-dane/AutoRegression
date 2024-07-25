@@ -4,13 +4,13 @@ rm(list = ls(all = T))
 
 library(dplyr)
 
-source("00_funciones.R", encoding = "UTF-8")
+source("scripts/00_funciones.R", encoding = "UTF-8")
 
 #===============================================================#
 #           1. Ejemplo: Predecir precios de vinos          ######
 #===============================================================#
 ## Cargar datos de entrenamiento y prueba
-uu = readRDS("F:/One_Drive/OneDrive - dane.gov.co/Proyectos/03_Licores/02_out/01_data/data_train_test_whisky_vt.rds")
+uu = readRDS("data/data_ejemplo_precios.rds")
 
 df.entrenamiento = uu$train
 df.prueba = uu$test
@@ -20,7 +20,7 @@ gc()
 
 ## Sacar una muestra más pequeña para que no demore mucho
 set.seed(465)
-df.entrenamiento = df.entrenamiento[sample(1:nrow(df.entrenamiento),50000),]
+df.entrenamiento = df.entrenamiento[sample(1:nrow(df.entrenamiento),40000),]
 df.entrenamiento$log_PRECIO_UNIDAD = log(df.entrenamiento$PRECIO_UNIDAD)
 df.prueba$log_PRECIO_UNIDAD = log(df.prueba$PRECIO_UNIDAD)
 
@@ -59,10 +59,10 @@ AutoRegression(
   
   ##============== Otros
   ## Nombre para crear carpeta principal con resultados
-  .folder = "01_ejemplo_whisky",
+  .folder = "ejemplo_precios",
   
   ## Sufijo para guardar resultados
-  .suffix = "05"
+  .suffix = "01"
 )
 
 #===========================#
@@ -101,8 +101,8 @@ df.estimaciones = AutoRegressionPredict(
   
   ##============== Otros
   ## Nombre para crear carpeta principal con resultados
-  .folder = "01_ejemplo_whisky",
+  .folder = "ejemplo_precios",
   
   ## Sufijo para guardar resultados
-  .suffix = "05"
+  .suffix = "01"
 )
