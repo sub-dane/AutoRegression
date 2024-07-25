@@ -55,7 +55,7 @@ AutoRegression(
 ```r
 df.estimaciones = AutoRegressionPredict(
   ##=========== Datos
-  df.test = df.prueba[c(1,500,132,18452,32147),],
+  df.test = df.prueba,
   ##============ Modelos con los que se quiere obtener la predicción
   modelo.lm = T,
   modelo.cuantilica = T,
