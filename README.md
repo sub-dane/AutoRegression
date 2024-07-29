@@ -8,6 +8,25 @@ La función principal que realiza el entrenamiento de los distintos modelos se l
 
 ## Ejemplo de uso para entrenamiento de modelos
 
+Los parámetros que tiene la función para ajustar los diversos modelos son los siguientes:
+
+* df.train: Dataframe con los datos para entrenar y ajustar los modelos, en caso que no se tenga la partición de los datos de esta forma se puede utilizar la función `sample` de R.
+* df.test: Dataframe con los datos para validar los resultados de los modelos.
+* modelo.lm: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo de regresión OLS.
+* modelo.cuantilica: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo de regresión cuantílica que modela principalmente la mediana y cuantiles 0.025, 0.05, 0.975 y 0.995 para obtener los intervalos de predicción.
+* modelo.rf: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo random forest.
+* modelo.xgboost: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo XGBoost.
+* modelo.lm.multinivel: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo de regresión OLS jerárquico.
+* modelo.nn: Valor lógico (TRUE o FALSE) dependiendo si se desea ajustar un modelo de redes neuronales superficiales (de una sola capa).
+* var.y: Caracter con el nombre de la variable de respuesta a modelar que se encuentra presente en el conjunto de entrenamiento y prueba.
+* var.log: Vector de valores de tipo caracter con el nombre de las variables explicativas que se les desea aplicar una tansformación logarítmica. Esto suele ser de utilidad cuando se tienen variables con distribuciones sesgadas, por ejemplo, variables relacionadas con conteos o dinero. En caso de que no haya ninguna variable que se le desee aplicar esta transformación, se deja `NULL`.
+* var.sqrt: Vector de valores de tipo caracter con el nombre de las variables explicativas que se les desea aplicar una tansformación de raíz cuadrada. Similar al caso de la transformación logarítmica esto se suele usar cuando se tienen variables con distribuciones sesgadas. En caso de que no haya ninguna variable que se le desee aplicar esta transformación, se deja `NULL`.
+* var.otras: Vector de valores tipo caracter con el nombre de las variables explicativas que no se les desea aplicar alguna transformación de las mencionadas o estandarización. En este caso se suelen ingresar variables categóricas, donde estas deben ser de tipo `character` y no `factor`. En caso de que no haya ninguna variable que se le desee aplicar esta transformación, se deja `NULL`.
+* var.e: Vector de valores de tipo caracter con el nombre de las variables explicativas continuas que se desean estandarizar y no aplicar alguna transformación logarítmica o de raíz cuadrada. En caso de que no haya ninguna variable que se le desee aplicar esta transformación, se deja `NULL`.
+* var.multinivel: Valor de tipo caracter con la variable explicativa que se desea ingresar para obtener el nivel o jerarquía en la regresión multinivel. En caso de que no haya ninguna variable que se le desee aplicar esta transformación, se deja `NULL`.
+* .folder: Valor de tipo caracter con el nombre de la carpeta principal donde se desean guardar los resultados exportados por los modelos.
+* .suffix: Valor de tipo caracter con el nombre de la carpeta secundaria donde se desean guardar los resultados exportados por los modelos. Esto puede ser de utilidad si se desean ajustar modelos haciendo cambios en las variables ingresadas o alguno de los parámetros de la función, con el fin de tener variables versiones del modelamiento en una misma carpeta principal.
+
 ```r
 ## Ajuste de varios modelos
 AutoRegression(
