@@ -1,4 +1,12 @@
 library(stringr)
+library(dplyr)
+library(stringr)
+library(quantreg) # Regresión Cuantílica
+library(xgboost) # XGBoost
+library(randomForest) # Random Forest
+library(ggplot2)
+library(multilevel)
+library(nnet)
 
 #==================================================#
 #    Función para limpieza de caracteres       #####
@@ -429,49 +437,6 @@ bootstrap_nnet <- function(train_data, boost_data, x_col, target_col, num_neuron
   return(results)
 }
 
-#================================================#
-# Función redes neuronales con varias capas ######
-#================================================#
-library(neuralnet)
-
-train_evaluate_nnet_keras <- function(train_data, test_data, x_col, target_col, num_layers, num_neurons, return_model) {
-  # browser()
-  X <- model.matrix(
-    as.formula(paste0(target_col, " ~ ", paste0(x_col, collapse = " + "))),
-    data = rbind(train_data, test_data))
-  
-  X = X[,-1]
-  train_x = X[1:nrow(train_data),]
-  test_x = X[(nrow(train_data) + 1):nrow(X),]
-  
-  colnames(train_x) = str_replace_all(colnames(train_x), " ", "_")
-  colnames(test_x) = str_replace_all(colnames(test_x), " ", "_")
-  
-  train_xy = as.data.frame(train_x) %>% mutate(!!sym(target_col) := train_y)
-  test_xy = as.data.frame(test_x) %>% mutate(!!sym(target_col) := test_y)
-  
-  # Entrenar el modelo
-  set.seed(123)
-  model <- neuralnet(
-    as.formula(paste0(target_col, " ~ ", paste0(colnames(train_x), collapse = " + "))),
-    data = train_xy, 
-    hidden = c(num_layers, num_neurons), 
-    linear.output = TRUE)
-  
-  # Predecir en el conjunto de prueba
-  predictions <- compute(model, test_x)$net.result
-  
-  # Calcular el error cuadrático medio
-  rmse <- sqrt(mean((predictions - test_y)^2))
-  
-  if(return_model) {
-    return(model)
-  } else {
-    return(rmse)
-  }
-  
-}
-
 #=====================================================================================#
 ## Función para hacer predicción manual en un conjunto de datos de un modelo LME ######
 #=====================================================================================#
@@ -500,15 +465,6 @@ ManualPredictLME <- function(model, newdata, formula.str2, var.random2) {
 #=====================================================#
 #          Función automatización modelos        ######
 #=====================================================#
-library(stringr)
-library(quantreg) # Regresión Cuantílica
-library(xgboost) # XGBoost
-library(randomForest) # Random Forest
-library(ggplot2)
-library(multilevel)
-library(dplyr)
-library(nnet)
-
 AutoRegression = function(
     df.train, 
     df.test,
