@@ -6,7 +6,16 @@ La función principal que realiza el entrenamiento de los distintos modelos se l
 
 ## Inicialización
 
-Comentar los paquetes que se requieren y cargar las funciones 
+Para comenzar a usar las funciones, simplemente se puede clonar el repositorio, abrir el archivo .Rproj y con el comando `source("scripts/00_funciones.R", encoding = "UTF-8")` se cargarán en el ambiente todas las funciones requeridas para ejecutar el proceso de entrenamiento o predicción de los modelos. Adicionalmente, antes de realizar este proceso, se debe asegurar que tiene instalados los siguientes paquetes de R:
+
+* dplyr: Manipulación y procesamiento de información
+* stringr: Limpieza de texto
+* ggplot2: Gráficas
+* quantreg: Regresión cuantílica
+* xgboost: Implementación de modelo XGBoost
+* randomForest: Implementación de modelo randomForest
+* multilevel: Regresión multinivel 
+* nnet: Implementación de redes neuronales de una sola capa
 
 ## Proceso
 
