@@ -10,7 +10,15 @@ Comentar los paquetes que se requieren y cargar las funciones
 
 ## Proceso
 
-<center><img src="https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png" width="80%" /></center>
+<div align="center">
+  <img src="https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png" width="80%" />
+</div>
+
+<div style="text-align: center;">
+  <img src="https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png" width="80%" />
+</div>
+
+
 
 _Gráfico del proceso_
 
