@@ -4,7 +4,17 @@ En este proyecto se ponen a disponibilidad dos funciones de R que permiten ajust
 
 La función principal que realiza el entrenamiento de los distintos modelos se llama `AutoRegression` y se encuentra en el código `00_funciones.R`. Posterior al entrenamiento de los modelos si se desean obtener las predicciones para un conjunto de datos que no fue usado para el entrenamiento o validación de las métricas de los modelos, se usa la función `AutoRegressionPredict` que tiene parámetros muy similares a `AutoRegression` y realiza la estimación de la variable objetivo para los modelos que se hayan entrenado.
 
-## Explicación proceso
+## Inicialización
+
+Comentar los paquetes que se requieren y cargar las funciones 
+
+## Proceso
+
+![Explicación proceso de automatización](https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png)
+
+https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png
+
+
 
 _Gráfico del proceso_
 
