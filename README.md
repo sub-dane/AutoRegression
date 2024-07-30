@@ -10,33 +10,13 @@ Comentar los paquetes que se requieren y cargar las funciones
 
 ## Proceso
 
+La función `AutoRegression` sigue un procedimiento habitual al entrenar modelo de aprendizaje de máquina y estadísticos en el cual en una primera instancia se preparan las variables que van a ser ingresadas al modelo, se ajustan los modelos con el conjunto de datos de entrenamiento y se validan los resultados con el de prueba, y finalmente, dado que se realizan múltiples modelos se comparan los resultados de forma visual con las gráficas de valores observados y predichos, y métricas como el RMSE, exactitud, sesgo, imprecisión, coeficiente de determinación ($R^{2}$) y cobertura de los intervalos de predicción sobre los valores observados. Este proceso se describe en la siguiente imagen:
+
 <div align="center">
   <img src="https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png" width="80%" />
 </div>
 
-<div style="text-align: center;">
-  <img src="https://github.com/sub-dane/AutoRegression/blob/3bc2adb9c7882575986c8d1990c9c60f171a0c2f/img/proceso_automatizacion.png" width="80%" />
-</div>
-
-
-
-_Gráfico del proceso_
-
-* Preparación de las variables
-* Entrenamiento de los modelos
-  * LM: Intervalos de predicción común y corriente
-  * CUANTILICA: Intervalos con los cuantiles
-  * RF: Intervalos con los resultados de todos los árboles
-  * XGBoost: Intervalos con múltiples modelos generados boostraping
-  * Multinivel: Intervalos común y corriente
-  * NN: Intervalos con múltiples modelos generados con boostraping
-* Explicación resultados exportados
-  * Modelos
-  * Gráficas de residuales
-  * Obs vs Pred
-  * Coeficientes
-  * Métricas: exactitud, sesgo, etc.
-* Comparación modelos
+Cabe mencionar que para los modelos de redes neuronales (nn) y XGBoost, dado que se estiman intervalos de predicción al 95% y 99% de confianza, se realiza un proceso de boostraping para entrenar varias veces dichos modelos y con las estimaciones de estos se obtienen intervalos de predicción para cualquier observación nueva.
 
 ## Ejemplo de uso para entrenamiento de modelos
 
